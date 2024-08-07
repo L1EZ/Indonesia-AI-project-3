@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Media</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .preview {
+            margin-top: 20px;
+        }
+        .preview img, .preview video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Upload Image and Video</h1>
+        <form id="mediaForm">
+            <div class="form-group">
+                <label for="imageInput">Choose Image</label>
+                <input type="file" class="form-control-file" id="imageInput" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="videoInput">Choose Video</label>
+                <input type="file" class="form-control-file" id="videoInput" accept="video/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="preview mt-4" id="previewContainer">
+            <h3>Preview</h3>
+            <div id="imagePreview"></div>
+            <div id="videoPreview"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').innerHTML = '<img src="' + e.target.result + '" class="img-fluid">';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('videoInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('videoPreview').innerHTML = '<video controls><source src="' + e.target.result + '" type="' + file.type + '"></video>';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('mediaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const imageFile = document.getElementById('imageInput').files[0];
+            const videoFile = document.getElementById('videoInput').files[0];
+            const formData = new FormData();
+            if (imageFile) {
+                formData.append('photo', imageFile);
+            }
+            if (videoFile) {
+                formData.append('video', videoFile);
+            }
+
+            axios.post('http://localhost:8000', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(response => {
+                const { image_url, video_url } = response.data;
+                if (image_url) {
+                    document.getElementById('imagePreview').innerHTML = '<img src="' + image_url + '" class="img-fluid">';
+                }
+                if (video_url) {
+                    document.getElementById('videoPreview').innerHTML = '<video controls><source src="' + video_url + '" type="video/mp4"></video>';
+                }
+            }).catch(error => {
+                console.error('Error uploading media:', error);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Tracking with YOLOv10</title>
+</head>
+<body>
+    <h1>Person Tracking with YOLOv10</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="video" accept="video/*">
+        <button type="submit">Upload</button>
+        <input type="file" name="photo" accept="image/*">
+        <button type="submit">Upload Image</button>
+    </form>
+</body>
+</html>

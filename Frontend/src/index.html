@@ -1,0 +1,656 @@
+<!--
+  Hello!
+  -
+  Simplefolio is a clean and responsive portfolio template for Developers!
+  Created by Jacobo Martinez.
+  -
+  Github Repo: https://github.com/cobiwave/simplefolio/
+  Readme: https://github.com/cobiwave/simplefolio/README.md
+  -
+  For business & inquires, contact me -> jacobojavier98@gmail.com
+-->
+<!DOCTYPE html>
+<html lang="en" class="sr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+
+    <!-- Todo: put here your site title -->
+    <title>Computer Vision Team A | Developer</title>
+    <!-- Todo: add some coding keywords below - e.g: (javascript, yourusername, etc) -->
+    <meta name="keywords" content="[username], [name], skill" />
+    <!-- Todo: improve your SEO by adding a small description of you -->
+    <meta name="description" content="Computer Vision Team A | Developer" />
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          margin: 20px;
+      }
+      h1, h2, h3 {
+          color: #333;
+      }
+      .variant {
+          margin-bottom: 20px;
+      }
+      .variant h3 {
+          margin-top: 0;
+      }
+      .preview {
+          margin-top: 20px;
+      }
+      .preview img, .preview video {
+          max-width: 100%;
+          height: auto;
+      }
+      .loader {
+        display: none;
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .wrapper{
+  position: relative;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 7px solid #fff;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+}
+.wrapper .images{
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.wrapper .images .img-1{
+  /* height: 100%;
+  width: 100%; */
+  /* background: url("images/car.jpg") no-repeat; */
+}
+.wrapper .images .img-2{
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  /* filter: blur(5px); */
+  /* background: url("images/car.png") no-repeat; */
+}
+.wrapper .slider{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+.wrapper .slider input{
+  width: 100%;
+  height: 100%;
+  outline: none;
+  background: none;
+  -webkit-appearance: none;
+}
+.slider input::-webkit-slider-thumb{
+  height: 100%;
+  width: 3px;
+  background: none;
+  -webkit-appearance: none;
+  cursor: col-resize;
+}
+.slider .drag-line{
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  left: 49.85%;
+  pointer-events: none;
+}
+.slider .drag-line::before,
+.slider .drag-line::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.slider .drag-line::before{
+  top: 0;
+}
+.slider .drag-line::after{
+  bottom: 0;
+}
+.slider .drag-line span{
+  height: 42px;
+  width: 42px;
+  border: 3px solid #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.slider .drag-line span::before,
+.slider .drag-line span::after{
+  position: absolute;
+  content: "";
+  top: 50%;
+  border: 10px solid transparent;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.slider .drag-line span::before{
+  left: 40%;
+  border-left-color: #fff;
+}
+.slider .drag-line span::after{
+  left: 60%;
+  border-top-color: #fff;
+}
+  </style>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="styles.scss" />
+    <script
+      defer
+      src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
+    ></script>
+
+    <!-- Todo: remove the below script once you finish your portfolio -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <!-- Todo: read the following HTML Todos to create your stunning portfolio website -->
+  <body>
+    <div id="top"></div>
+
+    <!-- **** Hero Section **** -->
+    <section id="hero" class="jumbotron">
+      <div class="container">
+        <h1 class="hero-title load-hidden">
+          Project <span class="text-color-main">Segmentation</span>
+          <br />
+          CV A Developer.
+        </h1>
+        <p class="hero-cta load-hidden">
+          <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about"
+            >Know more</a
+          >
+        </p>
+      </div>
+    </section>
+    <!-- /END Hero Section -->
+
+    <!-- **** About Section **** -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title load-hidden">About us</h2>
+        <div class="row about-wrapper">
+          <div class="col-md-4 col-sm-12">
+            <div class="about-wrapper__image load-hidden">
+              <img
+                alt="Profile Image"
+                class="img-fluid rounded shadow-lg"
+                height="auto"
+                width="300px"
+                src="assets/image1.png"
+                alt="Profile Image"
+              />
+            </div>
+            <h3 style="color:white"><strong>Cahyadi Hartanto S.</strong></h3>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="about-wrapper__image load-hidden">
+              <img
+                alt="Profile Image"
+                class="img-fluid rounded shadow-lg"
+                height="auto"
+                width="300px"
+                src="assets/image2.png"
+                alt="Profile Image"
+              />
+            </div>
+            <h3 style="color:white"><strong>Yosabad Tirando S.</strong></h3>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="about-wrapper__image load-hidden" style="align-items: center;">
+              <img
+                alt="Profile Image"
+                class="img-fluid rounded shadow-lg"
+                height="auto"
+                width="300px"
+                src="assets/image3.png"
+                alt="Profile Image"
+              />
+            </div>
+            <h3 style="color:white"><strong>Ade Rahman</strong></h3>
+          </div>
+          <hr style="margin-top: 40px;"/>
+          <div class="about-wrapper__info load-hidden" style="align-items: center;">
+            <span class="d-flex mt-3">
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--resume"
+                href=""
+              >
+                View Resume
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /END About Section -->
+
+    <!-- **** Projects Section **** -->
+    <section id="projects">
+      <div class="container">
+        <div class="project-wrapper">
+          <h2 class="section-title dark-blue-text">YOLOv8</h2>
+
+          <!-- Notice: each .row is a project -->
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="project-wrapper__text load-hidden">
+                <h1>Person Tracking Using YOLOv8</h1>
+                  <p>YOLOv8 (You Only Look Once, Version 10) is the latest iteration in the YOLO series of object detection models. Known for its speed and accuracy, YOLOv8 introduces several improvements over its predecessors, making it a powerful tool for real-time object detection tasks. It comes in various sizes to suit different application needs:</p>
+                  <div class="row" style="margin-bottom: 0;font-size: 1.6rem;">
+                    <div class="variant col-md-6 col-sm-12">
+                        <h3><strong>YOLOv8-n (nano)</strong></h3>
+                        <ul>
+                            <li><strong>Purpose</strong>: Designed for extremely resource-constrained environments.</li>
+                            <li><strong>Model Size</strong>: Smallest among all variants.</li>
+                            <li><strong>Performance</strong>: Ideal for applications where speed is crucial, but high accuracy can be compromised slightly.</li>
+                            <li><strong>Use Cases</strong>: Embedded systems, IoT devices, and mobile applications.</li>
+                        </ul>
+                    </div>
+
+                    <div class="variant col-md-6 col-sm-12">
+                        <h3><strong>YOLOv8-s (small)</strong></h3>
+                        <ul>
+                            <li><strong>Purpose</strong>: Balances between speed and accuracy with a slightly larger model size than nano.</li>
+                            <li><strong>Model Size</strong>: Small, but more capable than YOLOv8-n.</li>
+                            <li><strong>Performance</strong>: Good balance for real-time applications on devices with limited computing power.</li>
+                            <li><strong>Use Cases</strong>: Drones, robotics, and low-power devices.</li>
+                        </ul>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-bottom: 0;font-size: 1.6rem;">
+
+                    <div class="variant col-md-6 col-sm-12">
+                        <h3><strong>YOLOv8-m (medium)</strong></h3>
+                        <ul>
+                            <li><strong>Purpose</strong>: Offers a middle ground between speed and accuracy.</li>
+                            <li><strong>Model Size</strong>: Moderate, suitable for a wide range of applications.</li>
+                            <li><strong>Performance</strong>: High accuracy with reasonable speed, making it versatile.</li>
+                            <li><strong>Use Cases</strong>: General-purpose object detection tasks, such as surveillance and industrial automation.</li>
+                        </ul>
+                    </div>
+                    <div class="variant col-md-6 col-sm-12">
+                        <h3><strong>YOLOv8-b (base)</strong></h3>
+                        <ul>
+                            <li><strong>Purpose</strong>: The baseline model for typical object detection tasks.</li>
+                            <li><strong>Model Size</strong>: Standard size, providing a good trade-off between performance and resource requirements.</li>
+                            <li><strong>Performance</strong>: Well-rounded in terms of speed and accuracy.</li>
+                            <li><strong>Use Cases</strong>: Everyday applications, including video analysis and security systems.</li>
+                        </ul>
+                    </div>
+                    </div>
+                  <div class="row" style="margin-bottom: 0;font-size: 1.6rem;">
+
+                    <div class="variant col-md-6 col-sm-12">
+                        <h3><strong>YOLOv8-l (large)</strong></h3>
+                        <ul>
+                            <li><strong>Purpose</strong>: Designed for high accuracy, even if it means compromising some speed.</li>
+                            <li><strong>Model Size</strong>: Larger than the base model.</li>
+                            <li><strong>Performance</strong>: Excellent accuracy, suitable for tasks where precision is critical.</li>
+                            <li><strong>Use Cases</strong>: Detailed image analysis, medical imaging, and autonomous driving.</li>
+                        </ul>
+                    </div>
+
+                    <div class="variant col-md-6 col-sm-12">
+                        <h3><strong>YOLOv8-x (extra-large)</strong></h3>
+                        <ul>
+                            <li><strong>Purpose</strong>: The most powerful variant, offering the highest accuracy.</li>
+                            <li><strong>Model Size</strong>: Largest among all variants.</li>
+                            <li><strong>Performance</strong>: Prioritizes accuracy over speed, ideal for highly demanding tasks.</li>
+                            <li><strong>Use Cases</strong>: Research, large-scale image processing, and complex object detection scenarios.</li>
+                        </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <!-- <h3 class="project-wrapper__text-title">Person Tracking Using YOLOv10</h3> -->
+                <!-- <div>
+                  <p class="mb-4">
+                    
+                  </p>
+                </div> -->
+                <!-- <a
+                  rel="noreferrer"
+                  target="_blank"
+                  class="cta-btn cta-btn--hero"
+                  href="#!"
+                >
+                  See Live
+                </a>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  class="cta-btn text-color-main"
+                  href="#!"
+                >
+                  Source Code
+                </a> -->
+              </div>
+            </div>
+            <h2 class="section-title dark-blue-text">YOLOv8</h2>
+            <!-- <div class="col-lg-8 col-sm-12"> -->
+              <div class="project-wrapper__image load-hidden">
+                <a rel="noreferrer" href="#!" target="_blank">
+                  <div
+                    data-tilt
+                    data-tilt-max="4"
+                    data-tilt-glare="true"
+                    data-tilt-max-glare="0.5"
+                    class="thumbnail rounded js-tilt"
+                  > 
+                  <video class="img-fluid" controls>
+                      <source src="assets/3029469-hd_1920_1080_24fps_YOLOv10x_processed.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                    <!-- <img
+                      alt="Project Image"
+                      class="img-fluid"
+                      src="assets/project.jpg"
+                    /> -->
+                  </div>
+                </a>
+              </div>
+              
+            </div>
+
+            <div class="container mt-5">
+              <h1 class="text-center">Upload Image and Video</h1>
+              <form id="mediaForm">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="imageInput">Choose Image</label>
+                      <input type="file" class="form-control-file" id="imageInput" accept="image/*">
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="videoInput">Choose Video</label>
+                      <input type="file" class="form-control-file" id="videoInput" accept="video/*">
+                  </div>
+                </div>
+                  <button type="submit" class="btn btn-primary" style="width: 100%;margin-top: 5px;">Submit</button>
+              </form>
+              <div class="preview mt-4" id="previewContainer">
+                  <h3>Preview</h3>
+                  <div class="row" style="padding: 0 10px;">
+                    <div class="col-md-6" style="padding: 0px;" id="imagePreview"></div>
+                    <div class="col-md-6" style="padding: 0px;display:table-cell;vertical-align: middle;align-content: center;" id="imagePreviewData">
+                      <div class="loader"></div>
+                    </div>
+                  </div>
+                  <div class="row"  style="margin-top: 5px;padding: 0 10px;">
+                    <div style="padding: 0px;" class="col-md-6" id="videoPreview"></div>
+                    <div style="padding: 0px;display:table-cell;vertical-align: middle;align-content: center;" class="col-md-6" id="videoPreviewData">
+                      <div class="loader"></div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" onclick="(() => {let vids = document.getElementsByTagName('video');vids[1].play();vids[2].play()})()" style="width: 100%;margin-top: 5px;">Play</button>
+              </div>
+              <div class="wrapper">
+                <div class="images">
+                  <div class="img-1" style="overflow-x: clip;"></div>
+                  <div class="img-2" style="overflow-x: clip;"></div>
+                </div>
+                <div class="slider">
+                  <div class="drag-line">
+                    <span></span>
+                  </div>
+                  <input type="range" min="0" max="100" value="50">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" onclick="(() => {let vids = document.getElementsByTagName('video');vids[3].play();vids[4].play()})()" style="width: 100%;margin-top: 5px;">Play</button>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+          <script>
+            const slider = document.querySelector(".slider input");
+            const img = document.querySelector(".images .img-2");
+            const dragLine = document.querySelector(".slider .drag-line");
+            slider.oninput = ()=>{
+              let sliderVal = slider.value;
+              dragLine.style.left = sliderVal + "%";
+              img.style.width = sliderVal + "%";
+            }
+              document.getElementById('imageInput').addEventListener('change', function(event) {
+                console.log("change image",event.target.files)
+                  const file = event.target.files[0];
+                  if (file) {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                        document.getElementById("imagePreviewData").innerHTML = "<div style='display: inline-block;' class='loader'/>"
+                        document.getElementById('imagePreview').innerHTML = '<img style="width:100%;" src="' + e.target.result + '" class="img-fluid">';
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  });
+                  
+                  document.getElementById('videoInput').addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                        document.getElementById("videoPreviewData").innerHTML= "<div style='display: inline-block;' class='loader'/>"
+                        document.getElementById('videoPreview').innerHTML = '<video style="width:100%;" controls><source src="' + e.target.result + '" type="' + file.type + '"></video>';
+                        document.getElementsByClassName('img-1')[0].innerHTML = '<video style="height:720px;width:100%;" controls><source src="' + e.target.result + '" type="' + file.type + '"></video>';
+                      };
+                      reader.readAsDataURL(file);
+                  }
+              });
+      
+              document.getElementById('mediaForm').addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  const imageFile = document.getElementById('imageInput').files[0];
+                  const videoFile = document.getElementById('videoInput').files[0];
+                  const formData = new FormData();
+                  if (imageFile) {
+                      formData.append('photo', imageFile);
+                  }
+                  if (videoFile) {
+                      formData.append('video', videoFile);
+                  }
+      
+                  axios.post('http://localhost:8000', formData, {
+                      headers: {
+                          'Content-Type': 'multipart/form-data'
+                      }
+                  }).then(response => {
+                      const { image_url, video_url } = response.data;
+                      if (image_url) {
+                          document.getElementById('imagePreviewData').innerHTML = '<img style="width:100%;" src="http://localhost:8000' + image_url + '" class="img-fluid">';
+                      }
+                      if (video_url) {
+                          document.getElementById('videoPreviewData').innerHTML = '<video style="width:100%;" controls><source src="http://localhost:8000' + video_url + '" type="video/mp4"></video>';
+                          document.getElementsByClassName('img-2')[0].innerHTML = '<video style="height:720px;" controls><source src="http://localhost:8000' + video_url + '" type="video/mp4"></video>';
+                        }
+                  }).catch(error => {
+                      console.error('Error uploading media:', error);
+                  });
+              });
+          </script>
+          </div>
+          <!-- /END Project -->
+
+          <!-- Notice: each .row is a project -->
+          <!-- <div class="row">
+            <div class="col-lg-4 col-sm-12">
+              <div class="project-wrapper__text load-hidden">
+                <h3 class="project-wrapper__text-title">Project Title 1</h3>
+                <div>
+                  <p class="mb-4">
+                    Demonstrate in this description the skills of a programmer: such as having commitment, 
+                    having perseverance and accepting alternative solutions. Remember that being a portfolio you are not selling the project, 
+                    you are selling yourself, it reflects the resources used: Frameworks, libraries, platforms, etc.
+                  </p>
+                </div>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  class="cta-btn cta-btn--hero"
+                  href="#!"
+                >
+                  See Live
+                </a>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  class="cta-btn text-color-main"
+                  href="#!"
+                >
+                  Source Code
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-8 col-sm-12">
+              <div class="project-wrapper__image load-hidden">
+                <a rel="noreferrer" href="#!" target="_blank">
+                  <div
+                    data-tilt
+                    data-tilt-max="4"
+                    data-tilt-glare="true"
+                    data-tilt-max-glare="0.5"
+                    class="thumbnail rounded js-tilt"
+                  >
+                    <img
+                      alt="Project Image"
+                      class="img-fluid"
+                      src="assets/project.jpg"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div> -->
+          <!-- /END Project -->
+
+          <!-- Notice: each .row is a project -->
+          <!-- <div class="row">
+            <div class="col-lg-4 col-sm-12">
+              <div class="project-wrapper__text load-hidden">
+                <h3 class="project-wrapper__text-title">Project Title 2</h3>
+                <div>
+                  <p class="mb-4">
+                    If the project was collaborative, reflect it in this description, that will demonstrate communication and/or leadership skills. 
+                    Additionally, if you made use of the mastery of a second language, it will reflect on you professionalism.
+                  </p>
+                </div>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  class="cta-btn cta-btn--hero"
+                  href="#!"
+                >
+                  See Live
+                </a>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  class="cta-btn text-color-main"
+                  href="#!"
+                >
+                  Source Code
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-8 col-sm-12">
+              <div class="project-wrapper__image load-hidden">
+                <a rel="noreferrer" href="#!" target="_blank">
+                  <div
+                    data-tilt
+                    data-tilt-max="4"
+                    data-tilt-glare="true"
+                    data-tilt-max-glare="0.5"
+                    class="thumbnail rounded js-tilt"
+                  >
+                    <img
+                      alt="Project Image"
+                      class="img-fluid"
+                      src="assets/project.jpg"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div> -->
+          <!-- /END Project -->
+        </div>
+      </div>
+    </section>
+    <!-- /END Projects Section -->
+
+    <!-- **** Contact Section **** -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-wrapper load-hidden">
+          <p class="contact-wrapper__text">Contact Team CV A</p>
+          <a
+            rel="noreferrer"
+            target="_blank"
+            class="cta-btn cta-btn--resume"
+            href="mailto:cva@email.com"
+            >Email Us</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- /END Contact Section -->
+
+    <!-- **** Footer Section **** -->
+    <footer class="footer navbar-static-bottom">
+      <div class="container">
+        <a rel="noreferrer" href="#top" class="back-to-top">
+          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+        </a>
+        <div class="social-links">
+          <a rel="noreferrer" href="#!" target="_blank">
+            <i class="fa fa-twitter fa-inverse"></i>
+          </a>
+          <a rel="noreferrer" href="#!" target="_blank">
+            <i class="fa fa-linkedin fa-inverse"></i>
+          </a>
+          <a rel="noreferrer" href="#!" target="_blank">
+            <i class="fa fa-github fa-inverse"></i>
+          </a>
+        </div>
+
+        <hr />
+
+        <p class="footer__text">
+          © 2024 - Project Person Tracking
+          <a rel="noreferrer" href="https://github.com/cobiwave" target="_blank"
+            >Team CV A</a
+          >
+        </p>
+      </div>
+    </footer>
+    <!-- /END Footer Section -->
+
+    <script defer type="module" src="index.js"></script>
+  </body>
+</html>
